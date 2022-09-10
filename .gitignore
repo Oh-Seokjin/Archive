@@ -3,3 +3,5 @@ GoogleNews-vectors-negative300.bin
 ted_en-20160408.xml
 imdb_review.txt
 IMDb_Reviews.csv
+ratings.txt
+vocab.txt
