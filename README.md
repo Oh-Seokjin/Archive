@@ -1,1 +1,1 @@
-Goorm 자연어처리 과정의 프로젝트 저장소입니다.
+project01_text classifier
