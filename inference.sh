@@ -1,0 +1,1 @@
+python3 inference.py --src_lang ko_KR --tgt_lang en_XX  --gpu 0 --test_file {test_file}
