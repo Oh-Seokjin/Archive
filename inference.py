@@ -1,7 +1,7 @@
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 import argparse
-import json
+from tqdm import tqdm
 
 parser = argparse.ArgumentParser(description='')
 
@@ -27,10 +27,7 @@ with open(f"./data/test/{args.test_file}.txt")as f:
 testset = list(map(lambda s: s.strip(), test_prof))
 
 translator = pipeline('translation', model=model, tokenizer=tokenizer, src_lang=source_lang, tgt_lang=target_lang, device=device, max_length=200, batch_size=20)
-predictions = translator(testset)
-predictions = [predictions[i]['translation_text'] for i in range(len(predictions))]
-
-
-with open("./outputs/output.txt", 'w') as outfile:
-    for elem in predictions:
-        outfile.write(f"{elem}\n")
+for sentence in tqdm(testset):
+    predictions = translator(sentence)[0]['translation_text']
+    with open("./output/output.txt", 'a') as outfile:
+        outfile.write(f"{predictions}\n")
